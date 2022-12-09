@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>INPUT</legend>
+            Enter a string <br>
+        <textarea name="Input" id="str1" cols="100" rows="10"></textarea>
+        <br>
+        <br>
+        Enter 2nd string <br>
+        <input type="text" id="str2"><br><br>
+        <input type="button" value="submit" onclick="func()">
+        </fieldset>
+        <fieldset>
+            <legend>Output</legend>
+            The entered string is <p id="strr"></p>
+            no. of whitespaces <p id="ws"></p>
+            no. of digits <p id="digits"></p>
+            no. of alphabets <p id="alphabets"></p>
+            first index of second word <p id="idx"></p>
+            no. of occurrences of second word <p id="occ"></p>
+        </fieldset>
+        
+
+    </form>
+<script>
+    /*
+    a. Display the entered text
+b. Display the number of digits, white space characters and alphabets in the entered
+text
+c. Check the number of occurrences of any given word.
+d. Determine the position of occurrence of the search string in the given string 
+    */
+   function func(){
+    let x = document.getElementById("str1").value;
+    let y = document.getElementById("str2").value;
+    document.getElementById("strr").innerHTML = x;
+    let digits =0;
+    let ws = 0;
+    let alpha = 0;
+    let count = 0;
+    a=x.split(" ");
+    for(var i=0;i<x.length;i++){
+        if(x[i] === " ")ws++;
+        else if(x[i]>="A" && x[i]<="z")alpha++;
+        else if(x[i]>='0' && x[i]<='9')digits++;
+    }
+    console.log(alpha);
+    console.log(ws);
+    document.getElementById("digits").innerHTML = digits;
+    document.getElementById("alphabets").innerHTML = alpha;
+    document.getElementById("ws").innerHTML = ws;
+    for(var i=0;i<a.length;i++){
+        if(a[i]==y)count++;
+    }
+    let pos = x.search(y);
+    let m = "";
+    if(pos === -1)m="String not found";
+    else m = pos;
+    document.getElementById("idx").innerHTML = m;
+    document.getElementById("occ").innerHTML = count;
+   }
+</script>
+</body>
+</html>
